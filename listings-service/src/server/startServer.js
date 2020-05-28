@@ -8,6 +8,7 @@ import setupRoutes from "./routes";
 
 const PORT = accessEnv("PORT", 7100);
 
+// route performance middleware
 const app = express();
 
 app.use(bodyParser());

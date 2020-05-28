@@ -21,9 +21,9 @@ const setupRoutes = app => {
 				}
 			});
 
-			if (!user) 
+			if (!user)
 				return next(new Error("Invalid email!"));
-			
+
 			if (!passwordCompareSync(req.body.password, user.passwordHash)) {
 				return next(new Error("Incorrect password!"));
 			}
@@ -44,9 +44,9 @@ const setupRoutes = app => {
 		try {
 			const userSession = await UserSession.findByPk(req.params.sessionId);
 
-			if (!userSession) 
+			if (!userSession)
 				return next(new Error("Invalid session ID"));
-			
+
 			await userSession.destroy();
 
 			return res.end();
@@ -59,15 +59,18 @@ const setupRoutes = app => {
 		try {
 			const userSession = await UserSession.findByPk(req.params.sessionId);
 
-			if (!userSession) 
+			if (!userSession)
 				return next(new Error("Invalid session ID"));
-			
+
 			return res.json(userSession);
 		} catch (e) {
 			return next(e);
 		}
 	});
 
+	// create users route
+	// returns an error for invalid email or password
+	// requires a working user model (db folder)
 	app.post("/users", async (req, res, next) => {
 		if (!req.body.email || !req.body.password) {
 			return next(new Error("Invalid body!"));
@@ -90,9 +93,9 @@ const setupRoutes = app => {
 		try {
 			const user = await User.findByPk(req.params.userId);
 
-			if (!user) 
+			if (!user)
 				return next(new Error("Invalid user ID"));
-			
+
 			return res.json(user);
 		} catch (e) {
 			return next(e);

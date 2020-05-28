@@ -2,6 +2,8 @@ import {DataTypes, Model} from "sequelize";
 
 import sequelize from "./connection";
 
+//password hash is excluded from the defaul scope to protect encrypt
+
 export class User extends Model {}
 User.init({
 	id: {
