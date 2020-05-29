@@ -32,3 +32,5 @@ render(<Provider store={store}>
 		</ThemeProvider>
 	</ApolloProvider>
 </Provider>, document.getElementById("app"));
+
+// the user accessible ports are hosted on 7000

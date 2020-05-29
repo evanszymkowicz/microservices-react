@@ -1,11 +1,14 @@
 import {addHours} from "date-fns";
-
 import {User, UserSession} from "#root/db/models";
 import generateUUID from "#root/helpers/generateUUID";
 import hashPassword from "#root/helpers/hashPassword";
 import passwordCompareSync from "#root/helpers/passwordCompareSync";
 
 const USER_SESSION_EXPIRY_HOURS = 1;
+
+// REST is resourced based so create a new session to manage a login
+// New users are created in post.user
+// Relies on password compare using bcrypt (helper driver)
 
 const setupRoutes = app => {
 	app.post("/sessions", async (req, res, next) => {

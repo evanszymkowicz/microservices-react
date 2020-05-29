@@ -58,9 +58,9 @@ const Root = () => {
 		});
 	}, []);
 
-	if (!initialised) 
+	if (!initialised)
 		return "Loading...";
-	
+
 	return (<Wrapper>
 		<Container>
 			<Content>
