@@ -1,3 +1,4 @@
+// written to conform to bycrpt hash
 module.exports.up = (queryInterface, DataTypes) => {
 	return queryInterface.createTable("listings", {
 		id: {

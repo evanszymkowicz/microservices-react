@@ -4,7 +4,6 @@ import React from "react";
 import useForm from "react-hook-form";
 import {useDispatch} from "react-redux";
 import styled from "styled-components";
-
 import TextInput from "#root/components/shared/TextInput";
 import {setSession} from "#root/store/ducks/session";
 

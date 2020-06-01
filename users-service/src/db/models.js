@@ -2,7 +2,7 @@ import {DataTypes, Model} from "sequelize";
 
 import sequelize from "./connection";
 
-//password hash is excluded from the defaul scope to protect encrypt
+//password hash is excluded from the defaul scope to protect data
 
 export class User extends Model {}
 User.init({

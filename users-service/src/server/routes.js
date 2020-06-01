@@ -43,6 +43,8 @@ const setupRoutes = app => {
 		}
 	});
 
+	// delete session (logout)
+
 	app.delete("/sessions/:sessionId", async (req, res, next) => {
 		try {
 			const userSession = await UserSession.findByPk(req.params.sessionId);

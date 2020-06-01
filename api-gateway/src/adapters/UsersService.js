@@ -2,6 +2,8 @@ import got from "got";
 
 const USERS_SERVICE_API = "http://users-service:7101";
 
+// using an object is best for named parameters being passed into the function
+
 export default class UsersService {
 	static async createUser({email, password}) {
 		const body = await got.post(`${USERS_SERVICE_API}/users`, {
@@ -13,6 +15,7 @@ export default class UsersService {
 		return body;
 	}
 
+	// one method for each resolver/mutation
 	static async fetchUser({userId}) {
 		const body = await got.get(`${USERS_SERVICE_API}/users/${userId}`).json();
 		return body;

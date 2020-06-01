@@ -1,5 +1,6 @@
 import UsersService from "#root/adapters/UsersService";
 
+// session id as an object
 const deleteUserSessionResolver = async (obj, {
 	sessionId
 }, context) => {

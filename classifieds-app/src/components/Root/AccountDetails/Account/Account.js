@@ -29,11 +29,15 @@ const Wrapper = styled.div`
   font-size: 0.9rem;
 `;
 
+// Important not to forget front end validation for logout
+// prevents creating a default (evt.preventDefault)
+// Clear session removes need for async
+
 const Account = () => {
   const [deleteUserSession] = useMutation(mutation);
   const dispatch = useDispatch();
   const session = useSelector(state => state.session);
-
+  // no need for async
   return (
     <Wrapper>
       Logged in as
@@ -42,7 +46,7 @@ const Account = () => {
         onClick={evt => {
           evt.preventDefault();
           dispatch(clearSession());
-          deleteUserSession({ variables: { sessionId: session.id } }); // no need for async
+          deleteUserSession({ variables: { sessionId: session.id } });
         }}
       >
         (Logout)

@@ -10,6 +10,8 @@ import accessEnv from "#root/helpers/accessEnv";
 import formatGraphQLErrors from "./formatGraphQLErrors";
 import injectSession from "./injectSession";
 
+// chosing to go with seperate accessEnv functions because it is bad form to assume the same variables and config for each microservice
+
 const PORT = accessEnv("PORT", 7000);
 
 const apolloServer = new ApolloServer({

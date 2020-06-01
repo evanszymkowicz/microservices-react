@@ -1,3 +1,5 @@
+// the listing and users adapters serve as middleware between the services and the API gateway
+// makes https requests on the services in the application
 import got from "got"
 
 const LISTINGS_SERVICE_URI = "http://listings-service:7100";
