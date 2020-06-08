@@ -30,6 +30,8 @@ require("dotenv").config({path: rel("./.deploy.env")});
 //	from the node-deploy directory
 const accessEnv = require("./helpers/accessEnv");
 
+//	the child_process function is a callback chained to a Promise
+//	which is cleaner using async/await
 const exec = util.promisify(child_process.exec);
 
 const getFullDate = () => format(new Date(), "yyyyMMddHHmmss");
@@ -74,6 +76,8 @@ const rootDir = rel("../");
 	console.log("Copying appspec...");
 	fs.copyFileSync(rel("./appspec.yml"), rel("../appspec.yml"));
 
+	// excludes some develpoment files
+	// creates a zip file
 	console.log("Generating deployment file...");
 	const filename = `${deploymentDirName}-deployment-${getFullDate()}.zip`;
 	const zipPath = `/tmp/${filename}`;
@@ -110,7 +114,9 @@ const rootDir = rel("../");
 	}).promise();
 
 	console.log("Deployment initiated on CodeDeploy!");
-
+	//	this makes deployment tidy
+	//	lets all three services access the entire directory
+	//	prevent redundant deploy sequences
 	console.log("Cleaning up...");
 	fs.unlinkSync(rel("../deploy.lock"));
 	fs.unlinkSync(rel("../appspec.yml"));

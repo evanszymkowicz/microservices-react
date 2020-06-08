@@ -1,0 +1,12 @@
+# This file will be moved to the root dir
+
+version: 0.0
+os: linux
+files:
+  -source: /
+    destination: /opt/microservices-demo
+hooks:
+  BeforeInstall:
+    -location: api-gateway/aws/codedeploy/BeforeInstall/0_stopExistingProgram
+    timeout: 300
+    runas: root
